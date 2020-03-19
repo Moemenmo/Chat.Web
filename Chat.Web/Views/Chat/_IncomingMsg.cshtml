@@ -1,0 +1,12 @@
+﻿@model History
+<div class="incoming_msg">
+    <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+    <div class="received_msg">
+        <div class="received_withd_msg">
+            <p>
+                @Model.Message
+            </p>
+            <span class="time_date"> @Model.DateTime.TimeOfDay.Hours:@Model.DateTime.TimeOfDay.Minutes:@Model.DateTime.TimeOfDay.Seconds     @Model.DateTime.Month.ToString() /@Model.DateTime.Day</span>
+        </div>
+    </div>
+</div>

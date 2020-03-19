@@ -1,0 +1,59 @@
+﻿@model ChatViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h3 class=" text-center">Messaging</h3>
+    <div class="messaging">
+        <div class="inbox_msg">
+            <div class="inbox_people">
+                <div class="headind_srch">
+                    <div class="recent_heading">
+                        <h4>Users</h4>
+                    </div>
+                    @*<div class="srch_bar">
+            <div class="stylish-input-group">
+                <input type="text" class="search-bar" placeholder="Search">
+                <span class="input-group-addon">
+                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </span>
+            </div>
+        </div>*@
+                    @Html.HiddenFor(e=>e.User.Id,htmlAttributes: new { id = "UserID" })
+
+                </div>
+                <div class="inbox_chat">
+                    @foreach (var item in Model.Contacts)
+                    {
+                        @Html.Partial("_UserCard", item)
+                    }
+                </div>
+            </div>
+            <div class="mesgs">
+                <div class="test">
+                    @Html.Partial("_ChatBody",Model.MesseagesViewModel)
+                    <div id="afterChat" />
+                </div>
+
+                <div class="type_msg">
+                    <div class="input_msg_write">
+                        <input type="text" id="txt" class="write_msg" placeholder="Type a message" />
+                        <button   class="msg_send_btn" type="button" id="send"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <p class="text-center top_spac"> Design by <a target="_blank" href="#">Sunil Rajput</a></p>
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+<script src="https://localhost:44335/signalR/hubs"></script>
+<script src="~/Content/Chat/Chat.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

@@ -1,0 +1,9 @@
+﻿@model History
+<div class="outgoing_msg">
+    <div class="sent_msg">
+        <p>
+            @Model.Message
+        </p>
+        <span class="time_date"> @Model.DateTime.TimeOfDay.Hours:@Model.DateTime.TimeOfDay.Minutes:@Model.DateTime.TimeOfDay.Seconds     @Model.DateTime.Month.ToString() /@Model.DateTime.Day</span>
+    </div>
+</div>

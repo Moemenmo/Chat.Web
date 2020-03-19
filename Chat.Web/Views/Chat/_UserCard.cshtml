@@ -1,0 +1,26 @@
+﻿@model ApplicationUser
+    @{ 
+
+    }
+    
+
+    <div class="chat_list" id="@Model.Id">
+        <div class="chat_people">
+            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_ib">
+                <h5 onclick="RemoveChat('@Model.Id')"   >
+                    @Ajax.ActionLink(Model.UserName , "ShowTheard", new { userid = Model.Id },
+                new AjaxOptions
+                {
+                    HttpMethod = "GET",
+                    InsertionMode = InsertionMode.InsertBefore,
+                    UpdateTargetId = "afterChat"
+                }
+                )
+                            </h5>
+                <p>
+                   
+                </p>
+            </div>
+        </div>
+    </div>

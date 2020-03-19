@@ -1,0 +1,24 @@
+﻿@model MesseagesViewModel
+<div class="msg_history" id="chatbody">
+
+    <div class="chatBody" id="@Model.Id">
+        @if (Model.History.Count != 0)
+        {
+            foreach (var item in Model.History)
+            {
+                if (item.SenderId == Model.UserId)
+                {
+                    @Html.Partial("_IncomingMsg", item)
+                }
+                else
+                {
+                    @Html.Partial("_OutgoingMsg", item)
+
+                }
+            }
+
+        }
+
+    </div>
+
+</div>
