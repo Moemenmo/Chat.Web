@@ -9,7 +9,7 @@ namespace Chat.Models.Enums
     public enum Statues
     {
         Sent,
-        Deliverid,
+        Delivered,
         Seen
     }
 }

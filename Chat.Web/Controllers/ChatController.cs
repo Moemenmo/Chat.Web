@@ -1,5 +1,6 @@
 ﻿using Chat.Core;
 using Chat.Models;
+using Chat.Models.Enums;
 using Chat.Web.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -39,9 +40,15 @@ namespace Chat.Web.Controllers
         {
             MesseagesViewModel MVM = new MesseagesViewModel();
             var userM = UnitOfWork.ApplicationUserManager;
+            var historyM = UnitOfWork.HistoryManager;
             var user = userM.FindById(User.Identity.GetUserId());
             var reciver = userM.FindById(userid);
-            var theard = user.Theard.Where(e => e.Users.Contains(reciver)).ToList(); ;
+            var theard = user.Theard.Where(e => e.Users.Contains(reciver)).ToList();
+            foreach (var item in theard[0].History)
+            {
+                item.Statues = Statues.Seen;
+                historyM.Update(item);
+            }
             var users = new List<ApplicationUser>
             {
                 user,

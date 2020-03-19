@@ -26,6 +26,7 @@ namespace Chat.Web.Models
             var reciver = ctx.Users.Find(ReciverID);
             var sender = ctx.Users.Find(Context.User.Identity.GetUserId());
             var reciverlList=reciver.ConIDs.Select(e=>e.ConnectionId).ToList();
+            var msgStatues = (reciverlList.Count != 0);
             reciverlList.AddRange(sender.ConIDs.Select(e=>e.ConnectionId));
             var theard = sender.Theard.FirstOrDefault(e => e.Users.Contains(reciver));
             if (theard==null)
@@ -51,6 +52,10 @@ namespace Chat.Web.Models
                 DateTime = DateTime.Now
                     
                 };
+            if (msgStatues)
+            {
+                history.Statues = Statues.Delivered;
+            }
                 //historyManager.Add(history);
                 theard.History.Add(history);
                 ctx.History.Add(history);
