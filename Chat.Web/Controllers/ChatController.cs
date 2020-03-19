@@ -46,8 +46,12 @@ namespace Chat.Web.Controllers
             var theard = user.Theard.Where(e => e.Users.Contains(reciver)).ToList();
             foreach (var item in theard[0].History)
             {
-                item.Statues = Statues.Seen;
-                historyM.Update(item);
+                if (item.ReciverId==user.Id)
+                {
+                    item.Statues = Statues.Seen;
+                    historyM.Update(item);
+                }
+                
             }
             var users = new List<ApplicationUser>
             {
