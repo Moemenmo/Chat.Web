@@ -63,6 +63,7 @@ namespace Chat.Web.Controllers
                 user,
                 reciver
             };
+            lamiaaaaaaaa xD <3 
           var orderedusers= users.OrderBy(e => e.UserName  );
             foreach (var item in orderedusers)
             {
