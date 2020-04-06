@@ -23,14 +23,14 @@ hub.client.newMessage = (sendId, msg, divId) => {
     console.log(sendId)
     console.log(msg)
     console.log(divId)
-    divId = "#" + divId
+    div = "#" + divId
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() 
     if (sendId === userId) {
        
         console.log("#############")
-        $(divId).append(`<div class="incoming_msg">
+        $(div).append(`<div class="incoming_msg">
     <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
     <div class="received_msg">
         <div class="received_withd_msg">
@@ -43,15 +43,19 @@ hub.client.newMessage = (sendId, msg, divId) => {
 </div>`)
     }
     else {
+        if (document.getElementById(divId)!==null) {
+
         console.log("*******")
-        $(divId).append(`<div class="outgoing_msg">
+        $(div).append(`<div class="outgoing_msg">
     <div class="sent_msg">
         <p>
             ${msg}
         </p>
          <span class="time_date"> ${time}    |    ${date}</span>
+         <span class="time_date">Seen</span>
     </div>
 </div>`)
+        }
 
             
     }

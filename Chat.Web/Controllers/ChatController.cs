@@ -1,4 +1,5 @@
 ﻿using Chat.Core;
+using Chat.DBContext;
 using Chat.Models;
 using Chat.Models.Enums;
 using Chat.Web.Models;
@@ -6,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,6 +17,7 @@ namespace Chat.Web.Controllers
     [Authorize]
     public class ChatController : Controller
     {
+        ApplicationDbContext ctx = new ApplicationDbContext(); 
         public UnitOfWork UnitOfWork
         {
             get
@@ -49,7 +52,9 @@ namespace Chat.Web.Controllers
                 if (item.ReciverId==user.Id)
                 {
                     item.Statues = Statues.Seen;
-                    historyM.Update(item);
+                    ctx.History.Attach(item);
+                    ctx.Entry(item).State = EntityState.Modified;
+                    ctx.SaveChanges();
                 }
                 
             }
