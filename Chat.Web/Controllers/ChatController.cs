@@ -62,7 +62,9 @@ namespace Chat.Web.Controllers
             {
                 user,
                 reciver
+               
             };
+            Console.WriteLine("lamiaaaaa");
           var orderedusers= users.OrderBy(e => e.UserName);
             foreach (var item in orderedusers)
             {
