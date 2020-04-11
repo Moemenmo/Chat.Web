@@ -62,8 +62,8 @@ namespace Chat.Web.Controllers
             {
                 user,
                 reciver
-            };
-          var orderedusers= users.OrderBy(e => e.UserName  );
+            }; 
+          var orderedusers= users.OrderBy(e => e.UserName);
             foreach (var item in orderedusers)
             {
                 MVM.Id += item.Id;
